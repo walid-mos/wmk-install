@@ -4,6 +4,10 @@ use std::fs;
 use std::io::{self, BufRead};
 use std::process::{Command, Stdio};
 
+use crate::script_loader::read_toml;
+
+pub mod script_loader;
+
 /// Simple program to greet a person
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -16,7 +20,8 @@ fn main() {
 
     println!("Hello {}!", args.name);
 
-    install_brew();
+    read_toml();
+    // install_brew();
 }
 
 fn install_brew() {
@@ -126,4 +131,3 @@ fn install_brew() {
         }
     }
 }
-
